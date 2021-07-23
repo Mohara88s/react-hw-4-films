@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-hw-4-films/static/css/main.df1f6769.chunk.css",
+    "main.js": "/react-hw-4-films/static/js/main.2072d508.chunk.js",
+    "main.js.map": "/react-hw-4-films/static/js/main.2072d508.chunk.js.map",
+    "runtime-main.js": "/react-hw-4-films/static/js/runtime-main.b231f8ca.js",
+    "runtime-main.js.map": "/react-hw-4-films/static/js/runtime-main.b231f8ca.js.map",
+    "static/css/2.bc922b9c.chunk.css": "/react-hw-4-films/static/css/2.bc922b9c.chunk.css",
+    "static/js/2.0cf7d753.chunk.js": "/react-hw-4-films/static/js/2.0cf7d753.chunk.js",
+    "static/js/2.0cf7d753.chunk.js.map": "/react-hw-4-films/static/js/2.0cf7d753.chunk.js.map",
+    "index.html": "/react-hw-4-films/index.html",
+    "static/css/2.bc922b9c.chunk.css.map": "/react-hw-4-films/static/css/2.bc922b9c.chunk.css.map",
+    "static/css/main.df1f6769.chunk.css.map": "/react-hw-4-films/static/css/main.df1f6769.chunk.css.map",
+    "static/js/2.0cf7d753.chunk.js.LICENSE.txt": "/react-hw-4-films/static/js/2.0cf7d753.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b231f8ca.js",
+    "static/css/2.bc922b9c.chunk.css",
+    "static/js/2.0cf7d753.chunk.js",
+    "static/css/main.df1f6769.chunk.css",
+    "static/js/main.2072d508.chunk.js"
+  ]
+}
