@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
-import * as serviceAPI from '../services/themoviedb-api';
-import { Link } from 'react-router-dom';
+import { fetchTrendingMoviesToday } from '../../services/themoviedb-api';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function HomePage() {
+  const { url } = useRouteMatch();
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    serviceAPI.fetchTrendingMoviesByDay().then(request => {
+    fetchTrendingMoviesToday().then(request => {
       setMovies(request.results);
-      console.log(request);
     });
   }, []);
 
   return (
     <>
-      <h2>HomePage</h2>
+      <h2>Trending today</h2>
       {movies && (
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <Link>{movie.original_title}</Link>
+              <Link to={`${url}movies/${movie.id}`}>{movie.title}</Link>
             </li>
           ))}
         </ul>
@@ -27,5 +27,3 @@ export default function HomePage() {
     </>
   );
 }
-
-// to={`${url}/${movie.id}`}

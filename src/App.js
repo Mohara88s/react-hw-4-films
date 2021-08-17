@@ -1,14 +1,15 @@
-import Navigation from './components/Navigation/Navigation';
-import HomePage from './views/HomePage';
-import MoviesPage from './views/MoviesPage';
-import NotFoundView from './views/NotFoundView';
+import AppBar from './components/AppBar/AppBar';
+import HomePage from './views/HomePage/HomePage';
+import MoviesPage from './views/MoviesPage/MoviesPage';
+import MovieDetailsPage from './views/MovieDetailsPage/MovieDetailsPage';
+import NotFoundView from './views/NotFoundView/NotFoundView';
 import { Route, Switch } from 'react-router-dom';
 import 'modern-normalize/modern-normalize.css';
 
 export default function App() {
   return (
     <>
-      <Navigation />
+      <AppBar />
 
       <Switch>
         <Route exact path="/">
@@ -17,6 +18,10 @@ export default function App() {
 
         <Route exact path="/movies">
           <MoviesPage />
+        </Route>
+
+        <Route path="/movies/:movieId">
+          <MovieDetailsPage />
         </Route>
 
         <Route>
