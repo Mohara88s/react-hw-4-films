@@ -30,7 +30,7 @@ export default function MovieDetailsPage() {
   };
 
   return (
-    <>
+    <div className={styles.MovieDetailsPage}>
       <button type="button" onClick={onGoBack} className={styles.button}>
         &#8592; go back
       </button>
@@ -97,6 +97,6 @@ export default function MovieDetailsPage() {
           <Reviews movieId={movieId} />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }

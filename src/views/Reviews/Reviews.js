@@ -10,7 +10,7 @@ export default function Reviews({ movieId }) {
     fetchMovieReviewsById(movieId).then(request => setReviews(request.results));
   }, [movieId]);
   return (
-    <>
+    <div className={styles.Reviews}>
       {reviews.length > 0 ? (
         <ul className={styles.Reviews__list}>
           {reviews.map(el => (
@@ -24,9 +24,9 @@ export default function Reviews({ movieId }) {
           ))}
         </ul>
       ) : (
-        <h2>We don't have any reviews for this movie</h2>
+        <p>We don't have any reviews for this movie</p>
       )}
-    </>
+    </div>
   );
 }
 
