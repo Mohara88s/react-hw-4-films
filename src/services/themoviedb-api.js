@@ -1,6 +1,6 @@
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const KEY = '618d26280c3d16ba0e8ea1b5e615dd52';
-export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500/';
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
 async function fetchAPI(url = '', config = {}) {
   const response = await fetch(url, config);
@@ -21,7 +21,7 @@ export function fetchMovieById(movieId) {
   return fetchAPI(`${BASE_URL}movie/${movieId}?api_key=${KEY}`);
 }
 
-export function fetchMovieCastbyId(movieId) {
+export function fetchMovieCastById(movieId) {
   return fetchAPI(`${BASE_URL}movie/${movieId}/credits?api_key=${KEY}`);
 }
 

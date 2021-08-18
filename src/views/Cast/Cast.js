@@ -1,28 +1,36 @@
 import { useState, useEffect } from 'react';
-import { fetchMovieCastbyId, IMAGE_URL } from '../../services/themoviedb-api';
+import { fetchMovieCastById, IMAGE_URL } from '../../services/themoviedb-api';
+import PropTypes from 'prop-types';
 
 export default function Cast({ movieId }) {
-  console.log(movieId);
-  const [cast, setCast] = useState([null]);
+  const [cast, setCast] = useState(null);
 
   useEffect(() => {
-    fetchMovieCastbyId(movieId).then(request => setCast(request.cast));
-  }, []);
+    fetchMovieCastById(movieId).then(request => setCast(request.cast));
+  }, [movieId]);
   return (
     <>
-      <h1>cast</h1>
       <ul className="Cast">
-        {cast.map(el => (
-          <li key={el.id} className="CastItem">
-            <img
-              src={IMAGE_URL + el.profile_path}
-              alt={el.name}
-              className="CastItem_img"
-            />
-            <p className="CastItem_text">{el.name}</p>
-          </li>
-        ))}
+        {cast &&
+          cast.map(el => (
+            <li key={el.id} className="CastItem">
+              <img
+                src={
+                  el.profile_path
+                    ? `${IMAGE_URL}${el.profile_path}`
+                    : 'https://www.meme-arsenal.com/memes/56560310e90c633f9239e83ea1523504.jpg'
+                }
+                alt={el.name}
+                className="CastItem_img"
+              />
+              <p className="CastItem_text">{el.name}</p>
+            </li>
+          ))}
       </ul>
     </>
   );
 }
+
+Cast.propTypes = {
+  movieId: PropTypes.string,
+};

@@ -8,7 +8,7 @@ import {
   useParams,
 } from 'react-router-dom';
 
-// import Reviews from "../Reviews/Reviews"
+import Reviews from '../Reviews/Reviews';
 import Cast from '../Cast/Cast';
 
 export default function MovieDetailsPage() {
@@ -26,7 +26,11 @@ export default function MovieDetailsPage() {
       {movie && (
         <>
           <img
-            src={`${IMAGE_URL}${movie.poster_path}`}
+            src={
+              movie.poster_path
+                ? `${IMAGE_URL}${movie.poster_path}`
+                : 'https://www.meme-arsenal.com/memes/56560310e90c633f9239e83ea1523504.jpg'
+            }
             alt={movie.original_title}
           />
           <h2>{movie.original_title}</h2>
@@ -44,6 +48,7 @@ export default function MovieDetailsPage() {
       <p>Additional information</p>
 
       <Link to={`${url}/cast`}>Cast</Link>
+      <Link to={`${url}/reviews`}>Reviews</Link>
 
       <hr />
 
@@ -52,9 +57,9 @@ export default function MovieDetailsPage() {
           <Cast movieId={movieId} />
         </Route>
 
-        {/* <Route path="/movies/:movieId/reviews">
-          <Reviews/>
-        </Route> */}
+        <Route path={`${path}/reviews`}>
+          <Reviews movieId={movieId} />
+        </Route>
       </Switch>
     </>
   );
