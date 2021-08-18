@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieCastById, IMAGE_URL } from '../../services/themoviedb-api';
 import PropTypes from 'prop-types';
+import styles from './Cast.module.css';
 
 export default function Cast({ movieId }) {
   const [cast, setCast] = useState(null);
@@ -10,10 +11,10 @@ export default function Cast({ movieId }) {
   }, [movieId]);
   return (
     <>
-      <ul className="Cast">
+      <ul className={styles.Cast}>
         {cast &&
           cast.map(el => (
-            <li key={el.id} className="CastItem">
+            <li key={el.id} className={styles.Cast__item}>
               <img
                 src={
                   el.profile_path
@@ -21,9 +22,10 @@ export default function Cast({ movieId }) {
                     : 'https://www.meme-arsenal.com/memes/56560310e90c633f9239e83ea1523504.jpg'
                 }
                 alt={el.name}
-                className="CastItem_img"
+                className={styles.Cast__pic}
               />
-              <p className="CastItem_text">{el.name}</p>
+              <p className={styles.Cast__name}>{el.name}</p>
+              <p className={styles.Cast__character}>Character:{el.character}</p>
             </li>
           ))}
       </ul>

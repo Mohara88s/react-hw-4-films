@@ -1,0 +1,13 @@
+.Cast__item {
+  margin-bottom: 30px;
+}
+
+.Cast__pic {
+  width: 150px;
+}
+
+.Cast__name,
+.Cast__character {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}

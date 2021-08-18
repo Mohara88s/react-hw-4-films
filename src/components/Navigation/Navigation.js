@@ -2,14 +2,14 @@ import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
 const Navigation = () => (
-  <nav>
+  <nav className={styles.Navigation}>
     <NavLink
       exact
       to="/"
       className={styles.link}
       activeClassName={styles.activeLink}
     >
-      HomePage
+      Home
     </NavLink>
 
     <NavLink
@@ -18,7 +18,7 @@ const Navigation = () => (
       className={styles.link}
       activeClassName={styles.activeLink}
     >
-      MoviesPage
+      Movies
     </NavLink>
   </nav>
 );

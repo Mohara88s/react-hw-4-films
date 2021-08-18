@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchMovieReviewsById } from '../../services/themoviedb-api';
 import PropTypes from 'prop-types';
+import styles from './Reviews.module.css';
 
-export default function Cast({ movieId }) {
+export default function Reviews({ movieId }) {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -11,10 +12,10 @@ export default function Cast({ movieId }) {
   return (
     <>
       {reviews.length > 0 ? (
-        <ul>
+        <ul className={styles.Reviews__list}>
           {reviews.map(el => (
             <li key={el.id}>
-              <p>
+              <p className={styles.Reviews__author}>
                 <span>Author: </span>
                 {el.author}
               </p>
@@ -29,6 +30,6 @@ export default function Cast({ movieId }) {
   );
 }
 
-Cast.propTypes = {
+Reviews.propTypes = {
   movieId: PropTypes.string,
 };

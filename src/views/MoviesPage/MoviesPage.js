@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchMoviesByQuery } from '../../services/themoviedb-api';
 import { Link, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import Searchbar from '../../components/Searchbar/Searchbar';
+import styles from './MoviesPage.module.css';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
@@ -43,7 +44,7 @@ export default function MoviesPage() {
       )}
 
       {movies && (
-        <ul>
+        <ul className={styles.MoviesPage__list}>
           {movies.map(movie => (
             <li key={movie.id}>
               <Link

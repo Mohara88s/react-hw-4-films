@@ -1,0 +1,19 @@
+.button {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.card {
+  display: flex;
+}
+.card__pic {
+  width: 300px;
+}
+
+.card__info {
+  padding: 20px;
+}
+
+.list > li {
+  margin-bottom: 5px;
+}
