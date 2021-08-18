@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { fetchMoviesByQuery } from '../../services/themoviedb-api';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 import Searchbar from '../../components/Searchbar/Searchbar';
-import Loader from 'react-loader-spinner';
 
 export default function MoviesPage() {
   const { url } = useRouteMatch();
+  const location = useLocation();
+  const history = useHistory();
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(
+    new URLSearchParams(location.search).get('query') ?? '',
+  );
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (searchQuery)
@@ -17,24 +19,22 @@ export default function MoviesPage() {
         .then(request => {
           setMovies(request.results);
         })
-        .catch(error => setError(error.message))
-        .finally(() => setIsLoading(false));
+        .catch(error => setError(error.message));
   }, [searchQuery]);
 
   const onChangeQuery = query => {
     setMovies([]);
     setError(null);
     setSearchQuery(query);
-    setIsLoading(true);
+    history.push({
+      ...location,
+      search: `query=${query}`,
+    });
   };
 
   return (
     <>
       <Searchbar onSubmit={onChangeQuery} />
-
-      {isLoading && (
-        <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
-      )}
 
       {error && (
         <p style={{ color: 'red', textAlign: 'center', fontSize: '20px' }}>
@@ -46,7 +46,14 @@ export default function MoviesPage() {
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+              <Link
+                to={{
+                  pathname: `${url}/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
+                {movie.title}
+              </Link>
             </li>
           ))}
         </ul>

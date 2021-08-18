@@ -23,7 +23,7 @@ export default function Cast({ movieId }) {
           ))}
         </ul>
       ) : (
-        <h2>No reviews</h2>
+        <h2>We don't have any reviews for this movie</h2>
       )}
     </>
   );

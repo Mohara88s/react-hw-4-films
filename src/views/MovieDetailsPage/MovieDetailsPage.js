@@ -6,6 +6,8 @@ import {
   Link,
   useRouteMatch,
   useParams,
+  useLocation,
+  useHistory,
 } from 'react-router-dom';
 
 import Reviews from '../Reviews/Reviews';
@@ -13,6 +15,8 @@ import Cast from '../Cast/Cast';
 
 export default function MovieDetailsPage() {
   const { url, path } = useRouteMatch();
+  const location = useLocation();
+  const history = useHistory();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   useEffect(() => {
@@ -20,9 +24,15 @@ export default function MovieDetailsPage() {
       setMovie(request);
     });
   }, [movieId]);
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? '/movies');
+  };
 
   return (
     <>
+      <button type="button" onClick={onGoBack}>
+        &#8592; go back
+      </button>
       {movie && (
         <>
           <img
@@ -47,8 +57,22 @@ export default function MovieDetailsPage() {
       <hr />
       <p>Additional information</p>
 
-      <Link to={`${url}/cast`}>Cast</Link>
-      <Link to={`${url}/reviews`}>Reviews</Link>
+      <Link
+        to={{
+          pathname: `${url}/cast`,
+          state: { from: location?.state?.from ?? '/movies' },
+        }}
+      >
+        Cast
+      </Link>
+      <Link
+        to={{
+          pathname: `${url}/reviews`,
+          state: { from: location?.state?.from ?? '/movies' },
+        }}
+      >
+        Reviews
+      </Link>
 
       <hr />
 
